@@ -95,7 +95,7 @@
 <p>After the package is attached, data frames will print like tibbles, and printing of data frames will be affected by <em>{tibble}</em> and <em>{pillar}</em>’s options.</p>
 <p>The only two differences are that the header is different and row names are displayed by default when they exist. Tibbles don’t have row names, so this adjustment was necessary.</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="no">mtcars</span>
-<span class="co">#&gt; # Description: df[,12] [32 x 11]</span>
+<span class="co">#&gt; # Description: df[,11] [32 x 11]</span>
 <span class="co">#&gt;                    .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span>
 <span class="co">#&gt;  *        &lt;rownames&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1         Mazda RX4  21       6  160    110  3.9   2.62  16.5     0     1     4</span>
@@ -132,7 +132,7 @@
 <span class="co">#&gt; # ... with 22 more rows</span></pre></div>
 <p>We can use any argument from <code>tibble:::print.tbl</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">mtcars</span>, <span class="kw">n</span> <span class="kw">=</span> <span class="fl">2</span>)
-<span class="co">#&gt; # Description: df[,12] [32 x 11]</span>
+<span class="co">#&gt; # Description: df[,11] [32 x 11]</span>
 <span class="co">#&gt;               .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span>
 <span class="co">#&gt; *    &lt;rownames&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     Mazda RX4    21     6   160   110   3.9  2.62  16.5     0     1     4</span>

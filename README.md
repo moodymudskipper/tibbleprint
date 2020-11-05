@@ -49,7 +49,7 @@ so this adjustment was necessary.
 
 ``` r
 mtcars
-#> # Description: df[,12] [32 x 11]
+#> # Description: df[,11] [32 x 11]
 #>                    .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
 #>  *        <rownames> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1         Mazda RX4  21       6  160    110  3.9   2.62  16.5     0     1     4
@@ -94,7 +94,7 @@ We can use any argument from `tibble:::print.tbl`:
 
 ``` r
 print(mtcars, n = 2)
-#> # Description: df[,12] [32 x 11]
+#> # Description: df[,11] [32 x 11]
 #>               .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
 #> *    <rownames> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1     Mazda RX4    21     6   160   110   3.9  2.62  16.5     0     1     4

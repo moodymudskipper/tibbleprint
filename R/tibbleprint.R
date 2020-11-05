@@ -66,6 +66,14 @@ format.data.frame <- function (x, ..., n = NULL, width = NULL, n_extra = NULL) {
 #' @export
 format.rownames <- function(x, ...) field(x, "rn")
 
+#' @export
+obj_sum.dataframe_as_tibble <- function (x) {
+  class(x) <- setdiff(class(x), "dataframe_as_tibble")
+  type_sum <- if(identical(class(x), "data.frame")) "df" else class(x)[[1]]
+  type_sum <- paste0(type_sum, "[,", ncol(x)-1, "]")
+  paste0(type_sum, sprintf(" [%s x %s]", nrow(x), ncol(x)-1))
+}
+
 .onLoad <- function(libname, pkgname) {
   registerS3method("obj_sum", "dataframe_as_tibble", obj_sum.dataframe_as_tibble, envir = asNamespace("pillar"))
 
@@ -76,11 +84,4 @@ format.rownames <- function(x, ...) field(x, "rn")
   toset <- !(names(op.tibbleprint) %in% names(op))
   if(any(toset)) options(op.tibbleprint[toset])
   invisible()
-}
-
-
-#' @export
-obj_sum.dataframe_as_tibble <- function (x) {
-  class(x) <- setdiff(class(x), "dataframe_as_tibble")
-  paste0(pillar::type_sum(x), sprintf(" [%s x %s]", nrow(x), ncol(x)-1))
 }
