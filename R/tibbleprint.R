@@ -20,8 +20,7 @@ NULL
 #' @export
 #' @rdname tibbleprint_methods
 print.data.frame <- function (x, ..., n = NULL, width = NULL, n_extra = NULL,
-                              row.names = TRUE, base = getOption("tibbleprint.base"))
-{
+                              row.names = TRUE, base = getOption("tibbleprint.base")){
   dots <- list(...)
   nms <- names(dots)
   if (base || any(c("digits", "quote", "right", "max") %in% nms)) {
@@ -35,11 +34,11 @@ print.data.frame <- function (x, ..., n = NULL, width = NULL, n_extra = NULL,
     if(!is.null(n) && nr > n) {
       if("max" %in% nms)
         stop("`n` and `max` cannot be used at the same time if `n` is restrictive")
-      base::print.data.frame(head(x,n), ...)
+      base::print.data.frame(head(x,n), row.names = row.names, ...)
       writeLines(sprintf(
         " [ reached 'n' -- omitted %s rows ]", nr-n))
     } else {
-      base::print.data.frame(x, ...)
+      base::print.data.frame(x, row.names = row.names, ...)
     }
     return(invisible(x))
   }
