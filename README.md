@@ -28,8 +28,7 @@ library(tibbleprint)
 
 It’s usually bad practice to override base methods. It’s unlikely to
 have terrible consequences in this case though, and its nice to be able
-to benefit from pretty *{tibble}*’s pretty output on regular data
-frames.
+to benefit from *{tibble}*’s pretty output on regular data frames.
 
 In any case better use it on own projects, or remove from final
 deliverable to avoid confusing collaborator or reader, or make your
@@ -170,7 +169,6 @@ when you want to display small objects nested inside list columns, in
 those case using the `base` argument is useful.
 
 ``` r
-options(tibbleprint.base = FALSE)
 test <- data.frame(id = 1:2)
 test$list_col <- list(c(x=1, y=2), c(x=2, y = 4))
 
