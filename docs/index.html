@@ -85,7 +85,7 @@
 <span class="co">#&gt;   method            from</span>
 <span class="co">#&gt;   format.data.frame base</span>
 <span class="co">#&gt;   print.data.frame  base</span></pre></div>
-<p>It’s usually bad practice to override base methods. It’s unlikely to have terrible consequences in this case though, and its nice to be able to benefit from <em>{tibble}</em>’s pretty output on regular data frames.</p>
+<p>It’s usually bad practice to override base methods. It’s unlikely to have terrible consequences in this case though, and it’s nice to be able to benefit from <em>{tibble}</em>’s pretty output on regular data frames.</p>
 <p>In any case better use it on own projects, or remove from final deliverable to avoid confusing collaborator or reader, or make your local <em>R</em> authority grumpy.</p>
 <p>It’s also probably a bad idea to place the library call in your RProfile.</p>
 </div>
@@ -95,7 +95,7 @@
 <p>After the package is attached, data frames will print like tibbles, and printing of data frames will be affected by <em>{tibble}</em> and <em>{pillar}</em>’s options.</p>
 <p>The only two differences are that the header is different and row names are displayed by default when they exist. Tibbles don’t have row names, so this adjustment was necessary.</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="no">mtcars</span>
-<span class="co">#&gt; # Description: df[,12] [32 x 12]</span>
+<span class="co">#&gt; # Description: df[,12] [32 x 11]</span>
 <span class="co">#&gt;                    .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span>
 <span class="co">#&gt;  *        &lt;rownames&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1         Mazda RX4  21       6  160    110  3.9   2.62  16.5     0     1     4</span>
@@ -132,7 +132,7 @@
 <span class="co">#&gt; # ... with 22 more rows</span></pre></div>
 <p>We can use any argument from <code>tibble:::print.tbl</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">mtcars</span>, <span class="kw">n</span> <span class="kw">=</span> <span class="fl">2</span>)
-<span class="co">#&gt; # Description: df[,12] [32 x 12]</span>
+<span class="co">#&gt; # Description: df[,12] [32 x 11]</span>
 <span class="co">#&gt;               .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span>
 <span class="co">#&gt; *    &lt;rownames&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     Mazda RX4    21     6   160   110   3.9  2.62  16.5     0     1     4</span>
@@ -189,7 +189,7 @@
 <span class="co">#&gt; Mazda RX4 Wag  21   6  160 110    4  3   17  0  1    4    4</span>
 <span class="co">#&gt; Datsun 710     23   4  108  93    4  2   19  1  1    4    1</span>
 <span class="co">#&gt;  [ reached 'n' -- omitted 29 rows ]</span></pre></div>
-<p>Tibbles usually print nicer than data.frames, an occasional exception is when you want to display small objects nested inside list columns, in those case using the <code>base</code> argument is useful.</p>
+<p>Tibbles usually print nicer than data.frames, an occasional exception is when you want to display small objects nested inside list columns, in those cases using the <code>base</code> argument is useful.</p>
 <div class="sourceCode" id="cb8"><pre class="r"><span class="no">test</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">id</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">2</span>)
 <span class="no">test</span>$<span class="no">list_col</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="fl">1</span>, <span class="kw">y</span><span class="kw">=</span><span class="fl">2</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="fl">4</span>))
 
