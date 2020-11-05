@@ -1,0 +1,112 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# tibbleprint
+
+Print data frames as tibbles.
+
+## Installation
+
+Install with:
+
+``` r
+remotes::install_github("moodymudskipper/tibbleprint")
+```
+
+## When to use / not to use
+
+*{tibbleprint}* overrides `base::print.data.frame()` and 
+`base::format.data.frame()`.
+
+```{r example}
+library(tibbleprint)
+```
+
+It's usually bad practice to override base methods. It's unlikely to have 
+terrible consequences in this case though, and its nice to be able to benefit
+from pretty *{tibble}*'s pretty output on regular data frames.
+
+In any case better use it on own projects, or remove from final deliverable to avoid confusing collaborator or reader, or make your local *R* authority grumpy.
+
+It's also probably a bad idea to place the library call in your RProfile.
+
+## How to use
+
+After the package is attached, data frames will print like tibbles, and printing
+of data frames will be affected by *{tibble}* and *{pillar}*'s options.
+
+The only two differences are that the header is different and row names are displayed
+by default when they exist. Tibbles don't have row names, so this adjustment was
+necessary.
+
+```{r cars}
+mtcars
+
+# the data didn't change
+names(mtcars)
+```
+
+We can hide row names:
+
+```{r}
+print(mtcars, row.names = FALSE)
+```
+
+We can use any argument from `tibble:::print.tbl`:
+
+```{r}
+print(mtcars, n = 2)
+```
+
+The original base behavior is triggered by any of these conditions : 
+
+* The `base` argument is set to `TRUE`.
+* The `base` argument is not set and option `"tibbleprint.base"` is set to `TRUE`.
+* Other arguments from `base::print.data.frame` 
+  ("digits", "quote", "right", or "max") are used.
+
+```{r}
+options(tibbleprint.base = TRUE)
+mtcars
+options(tibbleprint.base = FALSE)
+```
+
+We made `n` work with base behavior for convenience.
+
+```{r}
+# digits is an argument of base::data.frame (so triggers base printing)
+# n isn't, yet this works
+print(mtcars, digits = 0, n = 3)
+```
+
+Tibbles usually print nicer than data.frames, an occasional exception is when you
+want to display small objects nested inside list columns, in those case using
+the `base` argument is useful.
+
+```{r}
+options(tibbleprint.base = FALSE)
+test <- data.frame(id = 1:2)
+test$list_col <- list(c(x=1, y=2), c(x=2, y = 4))
+
+test
+
+print(test, base = TRUE)
+```
+
+## Aknowledgements
+
+*{tibbleprint}* borrows a few essential lines of code from 
+Kirill Müller and Hadley Wickham's *{tibble}* package, and the added value
+comes essentially from their work.
