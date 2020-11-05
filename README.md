@@ -27,7 +27,7 @@ library(tibbleprint)
 ```
 
 It’s usually bad practice to override base methods. It’s unlikely to
-have terrible consequences in this case though, and its nice to be able
+have terrible consequences in this case though, and it’s nice to be able
 to benefit from *{tibble}*’s pretty output on regular data frames.
 
 In any case better use it on own projects, or remove from final
@@ -49,7 +49,7 @@ so this adjustment was necessary.
 
 ``` r
 mtcars
-#> # Description: df[,12] [32 x 12]
+#> # Description: df[,12] [32 x 11]
 #>                    .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
 #>  *        <rownames> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1         Mazda RX4  21       6  160    110  3.9   2.62  16.5     0     1     4
@@ -94,7 +94,7 @@ We can use any argument from `tibble:::print.tbl`:
 
 ``` r
 print(mtcars, n = 2)
-#> # Description: df[,12] [32 x 12]
+#> # Description: df[,12] [32 x 11]
 #>               .   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
 #> *    <rownames> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1     Mazda RX4    21     6   160   110   3.9  2.62  16.5     0     1     4
@@ -166,7 +166,7 @@ print(mtcars, digits = 0, n = 3)
 
 Tibbles usually print nicer than data.frames, an occasional exception is
 when you want to display small objects nested inside list columns, in
-those case using the `base` argument is useful.
+those cases using the `base` argument is useful.
 
 ``` r
 test <- data.frame(id = 1:2)

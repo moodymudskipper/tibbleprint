@@ -46,6 +46,7 @@ print.data.frame <- function (x, ..., n = NULL, width = NULL, n_extra = NULL,
     rn <- new_rcrd(list(rn = rnms), class = "rownames")
     x2 <- cbind(..rn.. = rn, x)
     names(x2)[[1]] <- "."
+    class(x2) <- c("dataframe_as_tibble", class(x2))
   } else {
     x2 <- x
   }
@@ -66,6 +67,8 @@ format.data.frame <- function (x, ..., n = NULL, width = NULL, n_extra = NULL) {
 format.rownames <- function(x, ...) field(x, "rn")
 
 .onLoad <- function(libname, pkgname) {
+  registerS3method("obj_sum", "dataframe_as_tibble", obj_sum.dataframe_as_tibble, envir = asNamespace("pillar"))
+
   op <- options()
   op.tibbleprint <- list(
     tibbleprint.base = FALSE
@@ -73,4 +76,11 @@ format.rownames <- function(x, ...) field(x, "rn")
   toset <- !(names(op.tibbleprint) %in% names(op))
   if(any(toset)) options(op.tibbleprint[toset])
   invisible()
+}
+
+
+#' @export
+obj_sum.dataframe_as_tibble <- function (x) {
+  class(x) <- setdiff(class(x), "dataframe_as_tibble")
+  paste0(pillar::type_sum(x), sprintf(" [%s x %s]", nrow(x), ncol(x)-1))
 }

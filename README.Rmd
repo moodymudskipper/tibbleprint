@@ -35,7 +35,7 @@ library(tibbleprint)
 ```
 
 It's usually bad practice to override base methods. It's unlikely to have 
-terrible consequences in this case though, and its nice to be able to benefit
+terrible consequences in this case though, and it's nice to be able to benefit
 from *{tibble}*'s pretty output on regular data frames.
 
 In any case better use it on own projects, or remove from final deliverable to avoid confusing collaborator or reader, or make your local *R* authority grumpy.
@@ -92,7 +92,7 @@ print(mtcars, digits = 0, n = 3)
 ```
 
 Tibbles usually print nicer than data.frames, an occasional exception is when you
-want to display small objects nested inside list columns, in those case using
+want to display small objects nested inside list columns, in those cases using
 the `base` argument is useful.
 
 ```{r}
