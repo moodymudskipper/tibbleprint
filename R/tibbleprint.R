@@ -66,7 +66,6 @@ format.data.frame <- function (x, ..., n = NULL, width = NULL, n_extra = NULL) {
 #' @export
 format.rownames <- function(x, ...) field(x, "rn")
 
-#' @export
 obj_sum.dataframe_as_tibble <- function (x) {
   class(x) <- setdiff(class(x), "dataframe_as_tibble")
   type_sum <- if(identical(class(x), "data.frame")) "df" else class(x)[[1]]

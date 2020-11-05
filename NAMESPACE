@@ -3,7 +3,6 @@
 S3method(format,data.frame)
 S3method(format,rownames)
 S3method(print,data.frame)
-export(obj_sum.dataframe_as_tibble)
 importFrom(cli,cat_line)
 importFrom(utils,getFromNamespace)
 importFrom(vctrs,field)
