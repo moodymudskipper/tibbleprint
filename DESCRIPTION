@@ -17,3 +17,5 @@ Imports:
     tibble,
     cli,
     vctrs
+URL: https://github.com/moodymudskipper/tibbleprint
+BugReports: https://github.com/moodymudskipper/tibbleprint/issues
